@@ -1,4 +1,4 @@
-#Common Pitfalls in CanJS
+#Observables and Scope Chains in CanJS
 It is often the most powerful parts of a framework that create confusion in the beginning. These elements, when comprehended, often become the favorite tools of the developers using the framework. Angular's directives are a well-known example of this. Directives are very powerful, and often misunderstood. Once grasped, however, they are well loved, and well used.
 
 In CanJS two aspects that can seem a bit mistifying to the new CanJS developer are Observables and Shared Scopes.
