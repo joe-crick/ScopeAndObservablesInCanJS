@@ -4,7 +4,7 @@ It is often the most powerful parts of a framework that create confusion for new
 In CanJS two aspects that can seem a bit mistifying to the new developer are Observables and Shared Scopes.
 
 ##Observables
-If you're already familiar with the Observer pattern, you can skip this section.
+If you're already familiar with the Observer pattern, you can skip ahead to [Implementing](#Implementing).
 
 CanJS applications are component based. A correctly built CanJS app will be composed of several can.Components, carefully integrated together to form a whole. When we use a component-based method of appliction composition, each component  should address a specific, encapsulated abstraction within the problem domain.  This ensures that there is a clear boundary between components (a separation of responsiblities), which makes them easier to test, reuse, and maintain.
 
@@ -14,7 +14,7 @@ To help clarify this concept, let's look at an example. Imagine that we have a s
 
 Within this application, the "Widgets" can.Model.List (and the individual Widget objects it contains) is the Subject. WidgetDashboard is the Observer. If a widget is updated (e.g., purchased, edited, or removed), because the WidgetDashbaord is observing the widgets, its state changes are displayed to the user as they occur.
 
-###Implementing an Observer
+###Implementing an Observer <a name="Implementing"></a>
 While we talk about the observer watching the subject, this isn't actually how the pattern works when you implement it. The observer actully registers with the subject. Then, when a state change occurs, the subject notifies the observer of the change.
 
 In a classic Observer pattern, the observer invokes the Register method on the subject, passing itself as an argument. Once the subject receives this reference, it must store it in order to notify the observer when a state change occurs sometime in the future.
