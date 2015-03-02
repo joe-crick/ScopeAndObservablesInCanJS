@@ -1,5 +1,5 @@
 #Observables and Scope Chains in CanJS
-It is often the most powerful parts of a framework that create confusion for new developers. These elements, when comprehended, frequently become the favorite tools of the developers using the framework. Angular's directives are a well-known example of this. In CanJS, two things that can seem a bit mistifying to the new developer are Observables and Shared Scopes.
+It is often the most powerful parts of a framework that create confusion for new developers. These elements, when comprehended, frequently become the favorite tools of the developers using the framework. In CanJS, two things that can seem a bit mistifying to the new developer are Observables and Shared Scopes.
 
 ##Observables
 If you're already familiar with the Observer pattern, you can skip ahead to [Implementing](#Implementing).
