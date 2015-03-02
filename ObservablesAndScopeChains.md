@@ -172,7 +172,7 @@ As is clear, there no reference anywhere in the code above to a variable named `
     {{/each}}
     </ul>
 
-Additionally, we might see references to variables in the View Model that have not been defined directly anywhere inside the View Model, such as:
+Additionally, we might see references to variables in the View Model that have not been defined directly anywhere in the View Model, such as:
 
     export var ContactListViewModel = can.Map.extend({
         filterContacts: function(filterValue){
@@ -181,6 +181,14 @@ Additionally, we might see references to variables in the View Model that have n
      	...
     });
 
-To review, scope chains are created by passing a value (or values) from either an ApplicationState object instance or a can.Component's scope (the parent scope) to another can.Component's scope (the child scope) using the view template that connects them. This is accomplished by including an attribute on the can.Component's HTML tag that defines both the child scope's variable name (attribute name), and its value (attribute value).
+##Review
+
+The Observer pattern describes a relationship between objects, where one object, the observer, observes and responds to changes in another object, the subject. Observables are central to constructing a CanJS application, and understanding how CanJS works. While this article focused on the use of Observables in creating communication channels between can.Models and can.Components, Observables are also important in:
+
+- Routing,
+- Data binding, and
+- Data management
+
+Scope chains are created by passing a value (or values) from either an ApplicationState object instance or a can.Component's scope (the parent scope) to another can.Component's scope (the child scope) using the view template that connects them. This is accomplished by including an attribute on the can.Component's HTML tag that defines both the child scope's variable name (attribute name), and its value (attribute value).
 
 ![](images/ScopeChain.png)
