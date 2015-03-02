@@ -1,25 +1,21 @@
 #Observables and Scope Chains in CanJS
-It is often the most powerful parts of a framework that create confusion for new developers. These elements, when comprehended, often become the favorite tools of the developers using the framework. Angular's directives are a well-known example of this. Directives are very powerful, and often misunderstood. Once grasped, however, they are well loved, and well used.
-
-In CanJS two aspects that can seem a bit mistifying to the new developer are Observables and Shared Scopes.
+It is often the most powerful parts of a framework that create confusion for new developers. These elements, when comprehended, frequently become the favorite tools of the developers using the framework. Angular's directives are a well-known example of this. In CanJS, two things that can seem a bit mistifying to the new developer are Observables and Shared Scopes.
 
 ##Observables
 If you're already familiar with the Observer pattern, you can skip ahead to [Implementing](#Implementing).
 
-CanJS applications are component based. A correctly built CanJS app will be composed of several can.Components, carefully integrated together to form a whole. When we use a component-based method of appliction composition, each component  should address a specific, encapsulated abstraction within the problem domain.  This ensures that there is a clear boundary between components (a separation of responsiblities), which makes them easier to test, reuse, and maintain.
+CanJS applications are component based. A correctly built CanJS app will be composed of several can.Components, carefully integrated to form a whole. When we use a component-based method of appliction composition, each component should address a specific, encapsulated abstraction within the problem domain.  This ensures that there is a clear boundary between components (a separation of responsiblities), which makes them easier to test, reuse, and maintain.
 
-While it is important for components to remain separate and encapsulated, for them to form a unified whole, they must be able to communicate with each other. This is where the Observer pattern comes in. In the Observer pattern, two actors, the Observer and the Subject forge a relationship. The Observer watches the Subject. When a change occurs in the subject, the observer is notified of this change and can respond accordingly.
+While it is important for components to remain separate and encapsulated, for them to work together to create an application, they must be able to communicate with each other. This is where the Observer pattern comes in. In the Observer pattern, two actors, the Observer and the Subject, forge a relationship. The Observer watches the Subject. When a change occurs in the subject, the observer is notified of this change and can respond accordingly.
 
-To help clarify this concept, let's look at an example. Imagine that we have a site that sells widgets. Our application uses a can.Model.List named "Widgets" to provide a list of all the widgets currently available for sale. Each widget returned by the can.Model.List contains an id, a description, a price, and an isSold property. In order to display this information to the user, the application uses a WidgetDashboard can.Component. The WidgetDashboard shows all of the widgets, and provides a means of selecting Widgets to purchase.
+To help clarify this concept, let's look at an example. Imagine we have a site that sells widgets. Our application uses a can.Model.List named "Widgets" to provide a list of all the widgets currently available for sale. Each widget returned by the can.Model.List contains an id, a description, a price, and an isSold property. In order to display this information to the user, the application uses a  can.Component called WidgetDashboard. The WidgetDashboard shows all of the widgets, and provides a means of selecting Widgets to purchase.
 
-Within this application, the "Widgets" can.Model.List (and the individual Widget objects it contains) is the Subject. WidgetDashboard is the Observer. If a widget is updated (e.g., purchased, edited, or removed), because the WidgetDashbaord is observing the widgets, its state changes are displayed to the user as they occur.
+The "Widgets" can.Model.List (and the individual Widget objects it contains) is the Subject. WidgetDashboard is the Observer. If a widget is updated (e.g., purchased, edited, or removed), because the WidgetDashbaord is observing the widgets, its state changes are displayed to the user as they occur.
 
 ###Implementing an Observer <a name="Implementing"></a>
 While we talk about the observer watching the subject, this isn't actually how the pattern works when you implement it. The observer actully registers with the subject. Then, when a state change occurs, the subject notifies the observer of the change.
 
-In a classic Observer pattern, the observer invokes the Register method on the subject, passing itself as an argument. Once the subject receives this reference, it must store it in order to notify the observer when a state change occurs sometime in the future.
-
-CanJS works a little differently. It's a bit easier. To create an observer-subject relationship in CanJS, all you have to do is include a reference to an observable element in the Subject. Let's look at an example, using our ficitious Widget application.
+To create an observer-subject relationship in CanJS, all you have to do is include a reference to an observable element in the Subject. Let's look at an example, using our ficitious Widget application.
 
 My Widgets model will be defined as follows:
 
@@ -186,3 +182,5 @@ Additionally, we might see references to variables in the View Model to variable
     });
 
 To review, scope chains are created by passing a value (or values) from either an ApplicationState object instance or a can.Component's scope (the parent scope) to another can.Component's scope (the child scope) using the view template that connects them. This is accomplished by including an attribute on the can.Component's HTML tag that defines both the child scope's variable name (attribute name), and its value (attribute value).
+
+![](images/ScopeChain.png)
