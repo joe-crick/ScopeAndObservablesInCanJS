@@ -15,7 +15,7 @@ The "Widgets" can.Model.List (and the individual Widget objects it contains) is 
 ###Implementing an Observer <a name="Implementing"></a>
 While we talk about the observer watching the subject, this isn't actually how the pattern works when you implement it. The observer actully registers with the subject. Then, when a state change occurs, the subject notifies the observer of the change.
 
-To create an observer-subject relationship in CanJS, all you have to do is include a reference to an observable element in the Subject. Let's look at an example, using our ficitious Widget application.
+To create an observer-subject relationship in CanJS, all you have to do is include a reference to an observable element in the Subject. Let's look at an example using our ficitious Widget application.
 
 My Widgets model will be defined as follows:
 
@@ -68,7 +68,7 @@ We create the Observer-Subject relationship between WidgetDashboardViewModel (Ob
 What this means, practically, is that the WidgetDashboardViewModel's widgetsAvailable get function will run if the length property of the WidgetModel.List changes (i.e., an item is added to or removed from WidgetModel.List).
 
 ##Understanding The Scope Chain in CanJS
-CanJS makes use of a hierarchical scope chain to pass information between objects in an application. Understanding how the scope chain works is essential to understanding how to build CanJS applications.
+CanJS makes use of a hierarchical scope chain to pass information between Components in an application. Understanding how the scope chain works is essential to understanding how to build CanJS applications.
 
 ###Scope
 Like many other JS frameworks, CanJS makes use of an observable scope object (a can.Map, to be specific) to share values between a can.Component, and it's view template. There are several ways to define a scope for a can.Component, including:
