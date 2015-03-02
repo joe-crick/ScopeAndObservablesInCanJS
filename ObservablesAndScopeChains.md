@@ -93,9 +93,9 @@ To directly define the scope of your can.Component, you provide the implementati
 While this is possible, and may make sense in certain instances, it is not the generally preferred method.
 
 ####ViewModel
-Using a ViewModel is the preferred method of implementing a component-specific scope. The advantage of separating the ViewModel from the can.Component is that you can independently test your ViewModel. Because a can.Component's scope is a can.Map, a view model must be a can.Map.
+Using a ViewModel is the preferred method of implementing a component-specific scope. The advantage of separating the ViewModel from the can.Component is that you can independently test your ViewModel.
 
-You can create a ViewModel, and assign it to a can.Component's scope, as follows:
+A can.Component's scope is a can.Map, therefore, a view model must be a can.Map. You can create a ViewModel, and assign it to a can.Component's scope, as follows:
 
     var SampleViewModel = can.Map.extend({
         define: {
