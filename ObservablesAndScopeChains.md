@@ -188,6 +188,10 @@ The Observer pattern describes a relationship between objects, where one object,
 - Data binding, and
 - Data management
 
+Creating an Observer-Subject relationship in CanJS is as easy as making a reference to the property of an Observable Subject in a method of the Observer.
+
 Scope chains are created by passing a value (or values) from either an ApplicationState object instance or a can.Component's scope (the parent scope) to another can.Component's scope (the child scope) using the view template that connects them. This is accomplished by including an attribute on the can.Component's HTML tag that defines both the child scope's variable name (attribute name), and its value (attribute value).
+
+Values passed from the parent scope appear automatically on the child scope---i.e., there is no explicit reference to them on the scope object.
 
 ![](images/ScopeChain.png)
