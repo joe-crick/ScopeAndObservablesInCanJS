@@ -172,7 +172,7 @@ As is clear, there no reference anywhere in the code above to a variable named `
     {{/each}}
     </ul>
 
-Additionally, we might see references to variables in the View Model to variables that have not been defined anywhere directly inside the View Model, such as:
+Additionally, we might see references to variables in the View Model that have not been defined directly anywhere inside the View Model, such as:
 
     export var ContactListViewModel = can.Map.extend({
         filterContacts: function(filterValue){
