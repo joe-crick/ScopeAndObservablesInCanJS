@@ -4,7 +4,7 @@ It is often the most powerful parts of a framework that create confusion for new
 ##Observables
 If you're already familiar with the Observer pattern, you can skip ahead to [Implementing](#Implementing).
 
-CanJS applications are component based. A correctly built CanJS app will be composed of several can.Components, carefully integrated to form a whole. When we use a component-based method of appliction composition, each component should address a specific, encapsulated abstraction within the problem domain.  This ensures that there is a clear boundary between components (a separation of responsiblities), which makes them easier to test, reuse, and maintain.
+CanJS applications are component based. A correctly built CanJS app will be composed of several can.Components, carefully integrated using a central Application State object to form a whole. When we use a component-based method of appliction composition, each component should address a specific, encapsulated abstraction within the problem domain.  This ensures that there is a clear boundary between components (a separation of responsiblities), which makes them easier to test, reuse, and maintain.
 
 While it is important for components to remain separate and encapsulated, for them to work together to create an application, they must be able to communicate with each other. This is where the Observer pattern comes in. In the Observer pattern, two actors, the Observer and the Subject, forge a relationship. The Observer watches the Subject. When a change occurs in the subject, the observer is notified of this change and can respond accordingly.
 
