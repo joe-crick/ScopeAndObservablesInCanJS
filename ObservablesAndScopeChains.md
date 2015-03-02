@@ -182,7 +182,7 @@ Additionally, we might see references to variables in the View Model that have n
     });
 
 ##Review
-The Observer pattern describes a relationship between objects, where one object, the observer, observes and responds to changes in another object, the subject. Observables are central to constructing a CanJS application, and understanding how CanJS works. While this article focused on the use of Observables in creating communication channels between can.Models and can.Components, Observables are also important in:
+The Observer pattern describes a relationship between objects, where one object, the observer, observes and responds to changes in another object, the subject. Observables are central to constructing a CanJS application, and understanding how CanJS works. While this article used the example of working with Observables in creating communication channels between can.Models and can.Components, Observables are also important in:
 
 - Routing,
 - Data binding, and
