@@ -67,19 +67,19 @@ We create the Observer-Subject relationship between WidgetDashboardViewModel (Ob
 
 What this means, practically, is that the WidgetDashboardViewModel's widgetsAvailable get function will run if the length property of the WidgetModel.List changes (i.e., an item is added to or removed from WidgetModel.List).
 
-#Understanding The Scope Chain in CanJS
+##Understanding The Scope Chain in CanJS
 CanJS makes use of a hierarchical scope chain to pass information between objects in an application. Understanding how the scope chain works is essential to understanding how to build CanJS applications.
 
-##Scope
-Like many other JS frameworks, CanJS makes use of an observable scope object (a can.Map, to be specific) to share values between a can.Component, and it's view template. There are several ways to define a scope for a can.Component:
+###Scope
+Like many other JS frameworks, CanJS makes use of an observable scope object (a can.Map, to be specific) to share values between a can.Component, and it's view template. There are several ways to define a scope for a can.Component, including:
 
 - Direct,
 - ViewModel, and
 - Inherited
 
-Both the Direct, and ViewModel methods are component-specific scopes. They belong to the component, as a distinct, encapsulated entity. Both require that you include a `scope` property on the can.Component.
+Both the Direct and ViewModel methods are component-specific scopes. They belong to the component, as a distinct, encapsulated entity. Both require that you include a `scope` property on the can.Component.
 
-###Direct
+####Direct
 To directly define the scope of your can.Component, you provide the implementation of the scope as an anonymous object literal, as follows:
 
 	can.Component.extend({
@@ -92,7 +92,7 @@ To directly define the scope of your can.Component, you provide the implementati
 
 While this is possible, and may make sense in certain instances, it is not the generally preferred method.
 
-###ViewModel
+####ViewModel
 Using a ViewModel is the preferred method of implementing a component-specific scope. Because a can.Component's scope is a can.Map, a view model must be a can.Map.
 
 The advantage of separating the ViewModel from the can.Component is that you can independently test your ViewModel.
@@ -115,7 +115,7 @@ You can create a ViewModel, and assign it to a can.Component's scope, as follows
 
 Calling can.Map.extend creates a constructor function for a can.Map. However, in most cases, you will not create an instance of the ViewModel and assign it to the scope. When you assign the constructor function to the scope, CanJS will instantiate the ViewModel automatically. If you were to provide an instance of the ViewModel to the scope, that instance would be shared amongst all instances of the can.Component. By providing a constructor function, rather than an instance, each time the can.Component is created, it will receive its own instance of the ViewModel you defined.
 
-###Inherited
+####Inherited
 can.Components can automatically inherit values on their scope from either the Application State, or the scope of a parent can.Component. This is one of the areas of CanJS that can get tricky, because a can.Component can have several objects or properties available to its scope that are not defined anywhere on the can.Component itself. Furthermore, when values are passed to a can.Component it is done using the view template. There is no indication anywhere in code that there is a connection between a can.Component and its parent scope. 
 
 Let's look at an example of this:
