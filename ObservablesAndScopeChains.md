@@ -1,12 +1,12 @@
 #Observables and Scope Chains in CanJS
-It is often the most powerful parts of a framework that create confusion for new developers. These elements, when comprehended, frequently become the favorite tools of the developers using the framework. In CanJS, two things that can seem a bit mistifying to the new developer are Observables and Shared Scopes.
+It is often the most powerful parts of a framework that create confusion for new developers. These elements, when comprehended, frequently become the favorite tools of the developers using the framework. In CanJS, two things that can seem a bit mistifying to the new developer are Observables and Scope Chains.
 
 ##Observables
 Already familiar with the Observer pattern? You can skip ahead to [Implementing](#Implementing).
 
-When we talk about Observables, we're talking about elements of the Observer, or Pub-Sub, pattern. In this pattern, there are at least two elements: a Subject, and and Observer. The Subject is the object being observed, and the Observer(s) watch for and respond to changes in the subject. If you've worked with a JavaScript MV* framework in your past, then you've worked with Observables---you just might not know it.  In any MV* framework, the view and the model form an observable pair, where the model is the Subject, and the view is the Observer.
+When we talk about Observables, we're talking about elements of the Observer, or Pub-Sub, pattern. In this pattern, there are at least two elements: a Subject, and and Observer. The Subject is the object being observed, and the Observer(s) watch for and respond to changes in the subject. If you've worked with a JavaScript MV* framework in your past, then you've worked with Observables---you just might not know it.  In an MV* framework, the view and the model form an observable pair, where the model is the Subject, and the view is the Observer.
 
-In any component-based architecture, Observables play an important role. CanJS applications are component based. A correctly built CanJS app will be composed of several can.Components integrated with a central Application State object, to form a whole. When we use a component-based method of appliction composition, each component should address a specific, encapsulated abstraction within the problem domain.  This ensures that there is a clear boundary between components (a separation of responsiblities), which makes them easier to test, reuse, and maintain.
+In any component-based architecture, Observables play an important role. CanJS applications are component based. When we use a component-based method of appliction composition, each component should address a specific, encapsulated abstraction within the problem domain.  This ensures that there is a clear boundary between components (a separation of responsiblities), which makes them easier to test, reuse, and maintain.
 
 While it is important for components to remain separate and encapsulated, for them to work together to create an application, they must be able to communicate with each other. This is where Observables comes in. Using the Observer pattern, changes to a Subject can be communicated to other components (or the application). The Observer pattern is ideal for this, because it allows communication between objects without requiring those objects to have any internal knowledge of each other. This decoupling of objects makes maintaining and extending your applications easier, more robust, and allows for each can.Component to be tested in isolation.
 
@@ -14,7 +14,7 @@ In CanJS, the following objects are Observable:
 
 ![](images/Observables.png)
 
-To help clarify this concept, let's look at an example. Imagine we have a site that sells widgets. Our application uses a can.Model.List (which is Observable) named "Widgets" to provide a list of all the widgets currently available for sale. Each widget returned by the can.Model.List contains:
+To help clarify this concept, let's look at an example. Imagine we have a site that sells widgets. Our application uses a can.Model.List (which is an observable Subject) named "Widgets" to provide a list of all the widgets currently available for sale. Each widget returned by the can.Model.List contains:
 
 - id,
 - description,
