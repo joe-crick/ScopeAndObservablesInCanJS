@@ -175,7 +175,7 @@ Creating the scope link is done, not in JavaScript, but in the view template of 
 
 Note in **(1)**, we have included a `contacts` attribute in the component tag, with a value of `{personCollection}`. This attribute creates the scope link. It makes the parent scope's personCollection available to the child scope. The name of the attribute will be the name used in the child scope to refer to the parent scope's object.
 
-In the example above, you would use the variable name `contacts` inside of ContactList to refer to the AppState's personCollection property. Note that the variable name `contacts` need never appear anywhere in ContactList's scope definition. Let's look at that now:
+In the example above, you would use the variable name `contacts` inside of ContactList to refer to the AppState's `personCollection` property. Note that the variable name `contacts` need never appear anywhere in ContactList's scope definition. Let's look at that now:
 
     export var ContactListViewModel = can.Map.extend({
         showDetail: function(){ ... }
@@ -204,17 +204,17 @@ Additionally, we might see references to variables in the View Model that have n
      	...
     });
 
-The image below, illustrates how all of these elements connect together:
+The image below, illustrates how all of the elements in a Scope Chain connect:
 
 ![](images/ScopeChain.png)
 
 ##Review
-The Observer pattern describes a relationship between objects, where one object, the observer, observes and responds to changes in another object, the subject. Observables are central to constructing a CanJS application, and understanding how CanJS works. While this article used the example of working with Observables to create communication channels between can.Models and can.Components, Observables are also important in:
+The Observer pattern describes a relationship between objects where one object, the observer, observes and responds to changes in another object, the subject. While this article used the example of working with Observables to create communication channels between can.Models and can.Components, Observables are also important in:
 
 - Routing,
 - Data binding, and
 - Data management
 
-Scope chains are created by passing a value (or values) from either an ApplicationState object instance or a can.Component's scope (the parent scope) to another can.Component's scope (the child scope) using the view template that connects them. This is accomplished by including an attribute on the can.Component's HTML tag that defines both the child scope's variable name (attribute name), and its value (attribute value).
+Scope chains are created by passing a value (or values) from either an ApplicationState object instance or a can.Component's scope (the parent scope) to another can.Component's scope (the child scope). Creating this link is accomplished by including an attribute on the can.Component's HTML tag that defines both the child scope's variable name (attribute name), and references its value from its parent scope.
 
-Values passed from the parent scope appear automatically on the child scope---i.e., there is no explicit reference to them on the scope object.
+Values passed from the parent scope appear automatically on the child scope---i.e., there need be no explicit reference to them on the scope object.
