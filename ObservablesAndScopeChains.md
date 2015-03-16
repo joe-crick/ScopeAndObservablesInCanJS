@@ -63,18 +63,6 @@ My Widgets model will be defined as follows:
         },
      {});
 
->As a side note, in the code above, we're using the `resource` property of can.Model. the `resource` property is a very useful shorthand for defining default methods on a can.Model. The code above is equivalent to the longer can.Model definition:
-
-    export default can.Model.extend({
-        findAll: "GET /widgets",
-        findOne: "GET /widgets/{id}",
-        create: "POST /widgets",
-        update: "PUT /widgets/{id}",
-        destroy: "DELETE /widgets/{id}"
-    },{});
-
->You can use the `resource` property short hand if the objects returned by your service have an id of "id".
-
 The ViewModel for my WidgetDashboard will be defined as follows:
 
     import can from "can";
