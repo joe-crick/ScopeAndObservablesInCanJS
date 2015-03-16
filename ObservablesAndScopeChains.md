@@ -175,7 +175,7 @@ Creating the scope link is done, not in JavaScript, but in the view template of 
 
 Note in **(1)**, we have included a `contacts` attribute in the component tag, with a value of `{personCollection}`. This attribute creates the scope link. It makes the parent scope's personCollection available to the child scope. The name of the attribute will be the name used in the child scope to refer to the parent scope's object.
 
-In the example above, you would use the variable name `contacts` inside of ContactList to refer to the personCollection. Note that the variable name `contacts` need never appear anywhere in ContactList's scope definition. Let's look at that now:
+In the example above, you would use the variable name `contacts` inside of ContactList to refer to the AppState's personCollection property. Note that the variable name `contacts` need never appear anywhere in ContactList's scope definition. Let's look at that now:
 
     export var ContactListViewModel = can.Map.extend({
         showDetail: function(){ ... }
