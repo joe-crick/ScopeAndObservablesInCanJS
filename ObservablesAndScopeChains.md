@@ -204,7 +204,7 @@ Additionally, we might see references to variables in the View Model that have n
      	...
     });
 
-The image below, illustrates how all of the elements in a Scope Chain connect:
+The image below illustrates how all of the elements in a Scope Chain connect:
 
 ![](images/ScopeChain.png)
 
