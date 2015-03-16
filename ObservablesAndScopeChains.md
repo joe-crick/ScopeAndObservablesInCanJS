@@ -162,9 +162,9 @@ Let's look at an example of this:
 
 In the code above, we **(1)** define the application state object for our application, and create an instance of it. **(2)**, assign the instance of our application state to become our route's can.Map; and **(3)**, bind the appState instance to our root view template.
 
-In our application, we have a can.Component, ContactList, that displays the names and telephone numbers of all the people in our application's PersonCollection. To do this, ContactList needs to read data from the PersonCollection defined on the appState object. To give contacts access to appState's PersonCollection, we establish a link between the scopes of appState and ContactList. When we create this link, we will establish a scope hierarchy---one scope will be the parent, and one the child. Because we are passing a value from appState to ContactList, appState is the parent scope, and ContactList's scope is the child scope. 
+In our application, we have a can.Component, ContactList, that displays the names and telephone numbers of all the people in our application's PersonCollection. To do this, ContactList needs to read data from the PersonCollection defined on the appState object. To give contacts access to appState's PersonCollection, we establish a link between the scopes of appState and ContactList. When we create this link, we will establish a scope hierarchy---one scope will be the parent, and one the child. Because we are passing a value from appState to ContactList, appState is the parent scope, and ContactList's scope is the child scope.
 
-Creating the scope link is done, not in code, but in the view template of the parent scope, as below:
+Creating the scope link is done, not in JavaScript, but in the view template of the parent scope, as below:
 
     <can-import from="components/contact_list/"/>
 
