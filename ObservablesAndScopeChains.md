@@ -79,7 +79,7 @@ The ViewModel for my WidgetDashboard will be defined as follows:
                 get: function () {
                     //Create the Observer-Subject relationship between
                     //WidgetDashboardViewModel, and WidgetModel
-                    var widgets = this.attr('widgets'); **1**
+                    var widgets = this.attr('widgets'); **(1)**
                     if (widgets) {
                         return widgets.length;
                     }
