@@ -39,13 +39,13 @@ You can explicitly create an observer-subject relationship using the .bind metho
 - can
 - can.compute
 
-The can.bind method allows you to listen for events on:
+The `can.bind` method allows you to listen for events on:
 
 - HTML elements and the window
 - Objects
 - Objects with bind / unbind methods
 
-can.compute has a .bind method that allows you to register observers specific to  a can.compute. The only event type that computes emit is `change`. The functions observing a can.compute can have up to three parameters:
+can.compute has a `.bind` method that allows you to register observers specific to  a can.compute. The only event type that computes emit is `change`. The functions observing a can.compute can have up to three parameters:
 
 - event: the event object.
 - newVal: the newly-computed value of the compute.
