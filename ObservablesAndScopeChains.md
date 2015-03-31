@@ -1,14 +1,27 @@
 #Observables and Scope Chains in CanJS
-It is often the most powerful parts of a framework that create confusion for new developers. These elements, when comprehended, frequently become the favorite tools of the developers using the framework. In CanJS, two things that can seem a bit mistifying to the new developer are Observables and Scope Chains.
+In CanJS, two things that can seem a bit mystifying to the new developer are Observables and Scope Chains. If you've struggled to understand either of these concepts, this article is for you.
 
 ##Observables
 Already familiar with the Observer pattern? You can skip ahead to [Implementing](#Implementing).
 
-When we talk about Observables, we're talking about elements of the Observer, or Pub-Sub, pattern. In this pattern, there are at least two elements: a Subject, and and Observer. The Subject is the object being observed, and the Observer(s) watch for and respond to changes in the subject. If you've worked with a JavaScript MV* framework in your past, then you've worked with Observables---you just might not know it.  In an MV* framework, the view and the model form an observable pair, where the model is the Subject, and the view is the Observer.
+When we talk about Observables, we're talking about elements of the Observer, or Pub-Sub, pattern. The pattern involves at least two objects:
 
-In any component-based architecture, Observables play an important role. CanJS applications are component based. When we use a component-based method of appliction composition, each component should address a specific, encapsulated abstraction within the problem domain.  This ensures that there is a clear boundary between components (a separation of responsiblities), which makes them easier to test, reuse, and maintain.
+- Publisher
+- Subscriber
 
-While it is important for components to remain separate and encapsulated, for them to work together to create an application, they must be able to communicate with each other. This is where Observables comes in. Using the Observer pattern, changes to a Subject can be communicated to other components (or the application). The Observer pattern is ideal for this, because it allows communication between objects without requiring those objects to have any internal knowledge of each other. This decoupling of objects makes maintaining and extending your applications easier, more robust, and allows for each can.Component to be tested in isolation.
+When it changes, the Publisher publishes a message to the objects that subscribe to it.
+
+![](images/PubSub.jpg)
+
+When the Subscriber receives the message, it will respond to the change in the Publisher. For example, In an MV* framework, the view subscribes to the model. When the model changes, it publishes a message to the view, and the view updates its contents to reflect the change in the model.
+
+In any component-based architecture, Observables play an important role. When we use a component-based method of application composition, each component should address a specific, encapsulated abstraction within the problem domain. This ensures that there is a clear boundary between components, which makes them easier to:
+
+- test, 
+- reuse, and 
+- maintain 
+
+While components need to be encapsulated, they also need to share data. The Observer pattern is ideal for this, because it allows communication between objects without requiring those objects to have any internal knowledge of each other.
 
 In CanJS, the following objects are Observable:
 
@@ -23,11 +36,9 @@ To help clarify this concept, let's look at an example. Imagine we have a site t
 
 properties. In order to display this information to the user, the application uses a can.Component called WidgetDashboard. The WidgetDashboard shows all of the widgets, and provides a means of selecting Widgets to purchase.
 
-The "Widgets" can.Model.List (and the individual Widget objects it contains) is the Subject. WidgetDashboard is the Observer. If a widget is updated (e.g., purchased, edited, or removed), because the WidgetDashbaord is observing the widgets, its state changes are displayed to the user as they occur.
+The "Widgets" can.Model.List (and the individual Widget objects it contains) is the Publisher. WidgetDashboard is the Subscriber. If a widget is updated (e.g., purchased, edited, or removed), its state changes are displayed to the user as they occur.
 
 ###Implementing an Observer <a name="Implementing"></a>
-While we talk about the observer watching the subject, this isn't actually how the pattern works when you implement it. The observer actully registers with the subject. Then, when a state change occurs, the subject notifies the observer of the change.
-
 There are two ways to create an observer-subject relationship in CanJS:
 
 - Explicit
@@ -55,6 +66,7 @@ can.compute has a `.bind` method that allows you to register observers specific 
 To create an Implicit observer-subject relationship in CanJS, all you have to do is include a reference to an observable Subject in the Observer. Let's look at an example using our ficitious Widget application.
 
 My Widgets model will be defined as follows:
+
 
     import can from "can"
 
@@ -88,9 +100,9 @@ The ViewModel for my WidgetDashboard will be defined as follows:
             }
         },
 
-We create the Observer-Subject relationship between WidgetDashboardViewModel (Observer) and WidgetModel (Subject) when we make reference to the length property of widgets in the widgetsAvailable property's get function. In fact, it is more accurate to say that we've created an Observer-Subject relationship between the widgetsAvailable property's get function (Observer), and the WidgetModel(Subject) **(1)**.  The get function is watching for changes in (i.e., observing) the widget's can.Model.List collection's length.
+We create the Pub-Sub relationship between WidgetDashboardViewModel (Subscriber) and `WidgetModel` (Publisher) when we make reference to the `length` property of `widgets` in the `widgetsAvailable` property's `get` function. In fact, it is more accurate to say that we've created an Pub-Sub relationship between the `widgetsAvailable` property's `get` function (Subscriber), and the `WidgetModel` (Publisher) **(1)**.
 
-What this means, practically, is that the WidgetDashboardViewModel's widgetsAvailable get function will run if the length property of the WidgetModel.List changes (i.e., an item is added to or removed from WidgetModel.List).
+What this means, practically, is that the `WidgetDashboardViewModel`'s `widgetsAvailable` `get` function will run if the `length` property of the WidgetModel.List changes (i.e., an item is added to or removed from `WidgetModel.List`).
 
 ##Understanding The Scope Chain in CanJS
 CanJS makes use of a hierarchical scope chain to pass information between Components in an application. Understanding how the scope chain works is essential to understanding how to build CanJS applications.
